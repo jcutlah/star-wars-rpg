@@ -1,0 +1,239 @@
+#scroll-text-container {
+    overflow: hidden;
+    height: 50px;
+}
+#scroll-text {
+
+}
+#attack-btn {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+}
+#attack-btn button {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid grey;
+}
+.col.space-between {
+    position: relative;
+}
+.fadeOut {
+    animation: fadeOut 5s ease;
+    animation-fill-mode: forwards;
+}
+.health-wrapper {
+    width: 100%;
+    height: 20px;
+    background-color: red;
+}
+.health-wrapper .health {
+    background-color: lawngreen;
+    height: 100%;
+}
+.contender img {
+    border-style: solid;
+    border-color: red;
+    border-width: 0;
+    max-width: 100%;
+    width: 350px;
+}
+#roster .player {
+    width: fit-content;
+    margin: 0 auto 15px;
+    position: relative;
+    height: fit-content;
+}
+#roster .player-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+#roster .player-name {
+    color: #fff;
+    background-color: rgba(0,0,0,0.4);
+    padding: 1px 10px;
+    font-size: 24px;
+    position: absolute;
+
+}
+#roster .player .image-wrapper, .contender .image-wrapper {
+    width: fit-content;
+    margin: 0 auto;
+}
+#roster .player img {
+    width: 100%;
+}
+div#roster {
+    min-height: 250px;
+    background: #ccc;
+    margin-bottom: 50px;
+
+}
+div#roster img {
+    width: 100%;
+    max-width: 205px;
+}
+.hp {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    padding: 1px 10px;
+}
+.contender.attack {
+    animation-name: shadowPulse;
+    animation-duration: 1.75s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.contender {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;    
+}
+.contender h3 {
+    position: absolute;
+    background: rgba(0,0,0,0.3);
+    padding: 4px 7px;
+    color: #fff;
+    left: 0;
+}
+.contender.flex {
+    animation-name: flexBig;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+#start-menu button {
+    border: 1px solid grey;
+}
+
+@media(max-width: 768px){
+    .contender h3 {
+        font-size: 20px;
+        bottom: 12px;
+    }
+    #roster .player-name {
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 540px){
+    .contender h3 {
+        font-size: 13px;
+        bottom: 12px;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+    99% {
+        display: block;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+@keyframes flexBig {
+    0% {
+        box-shadow: 0px 0px 3px 0px green;
+    }
+    15% {
+        box-shadow: 0px 0px 5px 1px green;
+    }
+    30% {
+        box-shadow: 0px 0px 7px 2px green;
+    }
+    45% {
+        box-shadow: 0px 0px 9px 3px regreend;
+    }
+    60% {
+        box-shadow: 0px 0px 11px 4px green;
+    }
+    15% {
+        box-shadow: 0px 0px 13px 5px green;
+    }
+    30% {
+        box-shadow: 0px 0px 15px 6px green;
+    }
+    45% {
+        box-shadow: 0px 0px 17px 7px green;
+    }
+}
+@keyframes shadowPulse {
+    0% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    5% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    10% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    15% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    20% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    25% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    30% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    35% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    40% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    45% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    50% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    55% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    60% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    65% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    70% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    75% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    80% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    85% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    90% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+    95% {
+        box-shadow: 0px 0px 12px 0px red;
+    }
+    100% {
+        box-shadow: 0px 0px 12px 3px red;
+    }
+}
+
