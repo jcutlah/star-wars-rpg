@@ -210,20 +210,16 @@ $(document).ready(function () {
         playerCounterAttack: function (power, sound, oneLiner) {
             console.log('counter attacking');
             this.animatePreAttackFlex('#enemy .contender');
+            this.currentPlayer.hp -= this.currentEnemy.counterPower;
             setTimeout(function () {
                 game.playSound(game.currentEnemy.sounds.attackSound);
                 game.animateBeingAttacked('#hero .contender');
                 game.changeHealth('#hero .health', (game.currentPlayer.hp / game.currentPlayer.totalHp) * 100, 'currentPlayer');
                 $('#attack-btn').show();
+                if (game.currentPlayer.hp <= 0) {
+                    game.defeat();
+                }
             }, 1500);
-
-            this.currentPlayer.hp -= this.currentEnemy.counterPower;
-            if (this.currentPlayer.hp <= 0) {
-                this.defeat();
-
-            } else {
-                console.log(this.currentPlayer);
-            }
             console.log(this.currentPlayer);
         },
         getBattleReady: function (name) {
