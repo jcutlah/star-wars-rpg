@@ -195,7 +195,7 @@ $(document).ready(function () {
                     game.currentEnemy.hp = 0;
                     game.currentEnemy.status = "defeated";
                     game.changeHealth('#enemy .health', 0, 'currentEnemy');
-                    this.victory();
+                    game.victory();
                     return true;
                 } else {
                     game.changeHealth('#enemy .health', (game.currentEnemy.hp / game.currentEnemy.totalHp) * 100, 'currentEnemy');
@@ -214,6 +214,7 @@ $(document).ready(function () {
                 game.playSound(game.currentEnemy.sounds.attackSound);
                 game.animateBeingAttacked('#hero .contender');
                 game.changeHealth('#hero .health', (game.currentPlayer.hp / game.currentPlayer.totalHp) * 100, 'currentPlayer');
+                $('#attack-btn').show();
             }, 1500);
 
             this.currentPlayer.hp -= this.currentEnemy.counterPower;
@@ -315,7 +316,7 @@ $(document).ready(function () {
             if (!game.playerAttack()) {
                 setTimeout(function () {
                     // game.playerCounterAttack();
-                    $('#attack-btn').show();
+                    // $('#attack-btn').show();
                 }, 3000);
             }
         } else {
