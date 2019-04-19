@@ -114,6 +114,10 @@ div#roster img {
 #start-menu button {
     border: 1px solid grey;
 }
+#iframeAudio {
+    width: 1px;
+    height: 1px;
+}
 
 @media(max-width: 768px){
     .contender h3 {

@@ -43,7 +43,7 @@ $(document).ready(function () {
                 sounds: {
                     themeSong: "",
                     hypeSound: "darthHype.mp3",
-                    attackSound: "lukeAttack.mp3"
+                    attackSound: "darthAttack.mp3"
                 },
                 oneLiner: "I'll watch you die.",
                 forceColor: ""
@@ -66,12 +66,36 @@ $(document).ready(function () {
                 sounds: {
                     themeSong: "",
                     hypeSound: "yodaHype.mp3",
-                    attackSound: "lukeAttack.mp3"
+                    attackSound: "yodaAttack.mp3"
                 },
-                oneLiner: "This match we will fight.",
+                oneLiner: "Match we will this fight.",
+                forceColor: ""
+            },
+            {
+                name: "Obi Wan Kenobi",
+                status: "",
+                hp: 120,
+                totalHp: 120,
+                attackPower: 13,
+                attackIncrement: 13,
+                counterPower: 30,
+                images: {
+                    roster: "obiWanRoster.jpeg",
+                    battle: "obiWanBattle.jpg",
+                    defeat: "",
+                    ready: "obiWanHype.gif",
+                    champion: ""
+                },
+                sounds: {
+                    themeSong: "",
+                    hypeSound: "obiWanHype.mp3",
+                    attackSound: "obiWanAttack.mp3"
+                },
+                oneLiner: "These are not the drones you're looking for.",
                 forceColor: ""
             }
         ],
+        openingSong: "openingSong.mp3",
         totalEnemies: 0,
         enemiesDefeated: 0,
         currentPlayer: {},
@@ -104,7 +128,7 @@ $(document).ready(function () {
             contender.addClass('contender');
             // console.log(playerObject);
             // console.log('object passed to loadPlayer()');
-            contender.attr('id', playerObject.name.replace(' ', '-'));
+            contender.attr('id', playerObject.name.replace(' ', '-').replace(' ','-'));
             contender.html("<h3>" + playerObject.name + "</h3><div class='image-wrapper'><img class='" + playerObject.status + "-image' src=assets/images/" + playerObject.images.ready + "><div class='health-wrapper'><div class='health' style='width: 100%'><span class='current-hp'>" + playerObject.hp + "</span></div></div></div>");
             if (playerObject.status == "hero") {
                 $('#hero').append(contender);
@@ -113,6 +137,8 @@ $(document).ready(function () {
             }
         },
         fadeOut: function (selector) {
+            console.log('running fadeOut()');
+            // debugger;
             $(selector).animate({
                 opacity: 0
             }, 4000);
@@ -154,7 +180,7 @@ $(document).ready(function () {
             }
             $('#status-message').show();
             // $('#enemy img').attr('src',this.currentEnemy.images.defeat);
-            this.fadeOut('#' + this.currentEnemy.name.replace(' ', '-'));
+            this.fadeOut('#' + this.currentEnemy.name.replace(' ', '-').replace(' ','-').replace(' ','-'));
         },
         defeat: function () {
             $('#attack-btn').hide();
@@ -287,6 +313,7 @@ $(document).ready(function () {
 
     }
     $('#start-menu button').click(function () {
+        $('#iframeAudio').remove();
         game.changeState("new-game");
         game.loadRoster();
         $('.player').click(function () {
@@ -320,5 +347,5 @@ $(document).ready(function () {
         }
 
     });
-
+    // game.playSound('openingSong.mp3');
 });
