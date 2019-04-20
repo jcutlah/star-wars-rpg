@@ -9,7 +9,7 @@ $(document).ready(function () {
                 totalHp: 150,
                 attackPower: 10,
                 attackIncrement: 10,
-                counterPower: 23,
+                counterPower: 24,
                 images: {
                     roster: "lukeRoster.jpg",
                     battle: "lukeBattle.jpg",
@@ -36,7 +36,7 @@ $(document).ready(function () {
                 images: {
                     roster: "darthRoster.jpg",
                     battle: "darthBattle.jpg",
-                    defeat: "",
+                    defeat: "darthDefeat.webp",
                     ready: "darthReady.gif",
                     champion: ""
                 },
@@ -59,7 +59,7 @@ $(document).ready(function () {
                 images: {
                     roster: "yodaRoster.jpeg",
                     battle: "yodaBattle.png",
-                    defeat: "",
+                    defeat: "yodaDefeat.gif",
                     ready: "yodaReady.gif",
                     champion: ""
                 },
@@ -74,15 +74,15 @@ $(document).ready(function () {
             {
                 name: "Obi Wan Kenobi",
                 status: "",
-                hp: 120,
-                totalHp: 120,
-                attackPower: 13,
-                attackIncrement: 13,
-                counterPower: 30,
+                hp: 130,
+                totalHp: 130,
+                attackPower: 11,
+                attackIncrement: 11,
+                counterPower: 27,
                 images: {
                     roster: "obiWanRoster.jpeg",
                     battle: "obiWanBattle.jpg",
-                    defeat: "",
+                    defeat: "obiDefeat.gif",
                     ready: "obiWanHype.gif",
                     champion: ""
                 },
@@ -100,6 +100,15 @@ $(document).ready(function () {
         enemiesDefeated: 0,
         currentPlayer: {},
         currentEnemy: {},
+        normalizeCounterPowers: function(){
+            console.log("running normalizeCounterPowers()");
+            $.each(this.players, function(){
+                console.log($(this));
+                console.log(game.players);
+                $(this).get(0).counterPower -= game.players.length;
+                console.log($(this));
+            });
+        },
         playSound: function (filePath) {
             // console.log('running playSound()');
             audio = $('#game-speaker');
@@ -172,6 +181,7 @@ $(document).ready(function () {
             console.log('victory');
             // console.log(this);
             $('#attack-btn').hide();
+            this.changePlayerImage('defeat', '.enemy-image');
             if (this.isChampion()) {
                 $('#status-message').html("You are a true Jedi. Or um, if you chose someone from the dark side...I guess you're like a true Dark Jedi or something.");
             } else {
@@ -250,6 +260,7 @@ $(document).ready(function () {
         },
         getBattleReady: function (name) {
             this.changeState('battle-ready');
+            this.normalizeCounterPowers();
             $.each(this.players, function () {
                 if (this.name == name) {
                     game.currentPlayer = this;
