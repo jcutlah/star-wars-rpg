@@ -130,7 +130,6 @@ div#roster img {
     height: 1px;
 }
 body {
-    background-image: url('/assets/images/starsBackground.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     min-height: calc(100vh);

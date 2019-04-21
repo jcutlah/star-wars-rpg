@@ -99,12 +99,9 @@ $(document).ready(function () {
         currentPlayer: {},
         currentEnemy: {},
         normalizeCounterPowers: function(){
-            console.log("running normalizeCounterPowers()");
+            // console.log("running normalizeCounterPowers()");
             $.each(this.players, function(){
-                console.log($(this));
-                console.log(game.players);
                 $(this).get(0).counterPower -= game.players.length;
-                console.log($(this));
             });
         },
         playSound: function (filePath) {
@@ -152,7 +149,7 @@ $(document).ready(function () {
             }
         },
         fadeOut: function (selector) {
-            console.log('running fadeOut()');
+            // console.log('running fadeOut()');
             // debugger;
             $(selector).animate({
                 opacity: 0
@@ -162,13 +159,13 @@ $(document).ready(function () {
             }, 4000);
         },
         isChampion: function () {
-            console.log('running isChampion()');
-            console.log(this.enemiesDefeated + ' of ' + this.totalEnemies + ' enemies defeated');
+            // console.log('running isChampion()');
+            // console.log(this.enemiesDefeated + ' of ' + this.totalEnemies + ' enemies defeated');
             return (this.enemiesDefeated === this.totalEnemies);
         },
         states: ['intro', 'new-game', 'battle-ready', 'battle-mode', 'victory', 'defeat'],
         changeState: function (newState) {
-            console.log('running changeState()');
+            // console.log('running changeState()');
             var stateToRemove;
             for (i = 0; i < this.states.length; i++) {
                 $('body').removeClass(this.states[i]);
@@ -178,13 +175,13 @@ $(document).ready(function () {
             // });
             $('body').addClass(newState);
             this.state = newState;
-            console.log(this);
+            // console.log(this);
         },
         victory: function () {
             this.enemiesDefeated++;
             // this.state = "victory";
             this.changeState('victory');
-            console.log('victory');
+            // console.log('victory');
             // console.log(this);
             $('#attack-btn').hide();
             this.changePlayerImage('defeat', '.enemy-image');
@@ -205,7 +202,7 @@ $(document).ready(function () {
             this.currentPlayer.hp = 0;
             this.changeHealth('#hero .health', 0, 'currentPlayer');
             this.changeState('defeat');
-            console.log('defeat');
+            // console.log('defeat');
             this.playSound(this.currentEnemy.sounds.victory);
             this.fadeOut('#' + this.currentPlayer.name.replace(' ', '-'));
         },
@@ -227,7 +224,7 @@ $(document).ready(function () {
         },
         playerAttack: function (power, sound) {
             //make attack sound
-            console.log(this.currentEnemy);
+            // console.log(this.currentEnemy);
             this.animatePreAttackFlex('#hero .contender');
             this.currentEnemy.hp -= this.currentPlayer.attackPower;
             this.currentPlayer.attackPower += this.currentPlayer.attackIncrement;
@@ -247,11 +244,11 @@ $(document).ready(function () {
                     }, 3000);
                 }
             }, 1500);
-            console.log(this.currentEnemy);
+            // console.log(this.currentEnemy);
             return false;
         },
         playerCounterAttack: function (power, sound, oneLiner) {
-            console.log('counter attacking');
+            // console.log('counter attacking');
             this.animatePreAttackFlex('#enemy .contender');
             this.currentPlayer.hp -= this.currentEnemy.counterPower;
             setTimeout(function () {
@@ -263,7 +260,7 @@ $(document).ready(function () {
                     game.defeat();
                 }
             }, 1500);
-            console.log(this.currentPlayer);
+            // console.log(this.currentPlayer);
         },
         getBattleReady: function (name) {
             this.changeState('battle-ready');
@@ -278,10 +275,10 @@ $(document).ready(function () {
                 }
             });
             this.loadPlayer(game.currentPlayer);
-            console.log(this);
+            // console.log(this);
         },
         changePlayerImage: function (imgType, target) {
-            console.log('changing images');
+            // console.log('changing images');
             var currentObject;
             if (target == ".hero-image") {
                 currentObject = "currentPlayer";
@@ -295,7 +292,7 @@ $(document).ready(function () {
             $('#counter').show();
             $("#attack-btn").hide();
             $('#status-message').hide();
-            console.log("running getBattleMode()");
+            // console.log("running getBattleMode()");
             this.changeState('battle-mode');
             $.each(this.players, function () {
                 if (this.name == name) {
@@ -303,7 +300,7 @@ $(document).ready(function () {
                 }
             });
             // this.state = "battle-mode";
-            console.log(this);
+            // console.log(this);
             var counter = 5;
             // console.log(counter);
             $('#counter').text(counter);
