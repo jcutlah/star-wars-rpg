@@ -119,6 +119,7 @@ div#roster img {
 }
 #start-menu button {
     border: 1px solid grey;
+    -webkit-appearance: button;
 }
 #counter {
     color: #000;
@@ -130,8 +131,9 @@ div#roster img {
 }
 body {
     background-image: url('/assets/images/starsBackground.jpg');
-    background-size: auto 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
+    min-height: calc(100vh);
 }
 
 @media(max-width: 768px){
