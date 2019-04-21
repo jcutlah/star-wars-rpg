@@ -5,8 +5,8 @@ $(document).ready(function () {
             {
                 name: "Luke Skywalker",
                 status: "",
-                hp: 150,
-                totalHp: 150,
+                hp: 140,
+                totalHp: 140,
                 attackPower: 10,
                 attackIncrement: 10,
                 counterPower: 24,
@@ -14,13 +14,12 @@ $(document).ready(function () {
                     roster: "lukeRoster.jpg",
                     battle: "lukeBattle.jpg",
                     defeat: "lukeDefeat.gif",
-                    ready: "lukeReady.gif",
-                    champion: ""
+                    ready: "lukeReady.gif"
                 },
                 sounds: {
-                    themeSong: "",
                     hypeSound: "darthHype.mp3",
-                    attackSound: "lukeAttack.mp3"
+                    attackSound: "lukeAttack.mp3",
+                    themeSong: "lukeBattle.mp3"
                 },
                 oneLiner: "Aw geez guys.",
                 forceColor: ""
@@ -41,7 +40,7 @@ $(document).ready(function () {
                     champion: ""
                 },
                 sounds: {
-                    themeSong: "",
+                    themeSong: "darthMaulTheme.mp3",
                     hypeSound: "darthHype.mp3",
                     attackSound: "darthAttack.mp3"
                 },
@@ -64,7 +63,7 @@ $(document).ready(function () {
                     champion: ""
                 },
                 sounds: {
-                    themeSong: "",
+                    themeSong: "yodaTheme.mp3",
                     hypeSound: "yodaHype.mp3",
                     attackSound: "yodaAttack.mp3"
                 },
@@ -83,13 +82,12 @@ $(document).ready(function () {
                     roster: "obiWanRoster.jpeg",
                     battle: "obiWanBattle.jpg",
                     defeat: "obiDefeat.gif",
-                    ready: "obiWanHype.gif",
-                    champion: ""
+                    ready: "obiWanHype.gif"
                 },
                 sounds: {
-                    themeSong: "",
                     hypeSound: "obiWanHype.mp3",
-                    attackSound: "obiWanAttack.mp3"
+                    attackSound: "obiWanAttack.mp3",
+                    themeSong: "obiWanBattle.mp3"
                 },
                 oneLiner: "These are not the drones you're looking for.",
                 forceColor: ""
@@ -112,6 +110,14 @@ $(document).ready(function () {
         playSound: function (filePath) {
             // console.log('running playSound()');
             audio = $('#game-speaker');
+            // console.log(audio);
+            audio.attr('src', "assets/audio/" + filePath);
+            audio.get(0).play();
+        },
+        playMusic: function (filePath) {
+            // console.log('running playSound()');
+            audio = $('#song-speaker');
+            audio.loop = true;
             // console.log(audio);
             audio.attr('src', "assets/audio/" + filePath);
             audio.get(0).play();
@@ -195,6 +201,7 @@ $(document).ready(function () {
         defeat: function () {
             $('#attack-btn').hide();
             this.changePlayerImage('defeat', '.hero-image');
+            this.changePlayerImage('ready', '.enemy-image');
             this.currentPlayer.hp = 0;
             this.changeHealth('#hero .health', 0, 'currentPlayer');
             this.changeState('defeat');
@@ -265,6 +272,7 @@ $(document).ready(function () {
                 if (this.name == name) {
                     game.currentPlayer = this;
                     this.status = "hero";
+                    game.playMusic(this.sounds.themeSong);
                 } else {
                     this.status = "enemy";
                 }
@@ -346,16 +354,17 @@ $(document).ready(function () {
     });
     $('#attack-btn').click(function () {
         $(this).hide();
-        if (game.state == "battle-mode") {
-            if (!game.playerAttack()) {
-                setTimeout(function () {
-                    // game.playerCounterAttack();
-                    // $('#attack-btn').show();
-                }, 3000);
-            }
-        } else {
+        game.playerAttack();
+        // if (game.state == "battle-mode") {
+        //     if (!game.playerAttack()) {
+        //         setTimeout(function () {
+        //             // game.playerCounterAttack();
+        //             // $('#attack-btn').show();
+        //         }, 3000);
+        //     }
+        // } else {
 
-        }
+        // }
 
     });
     // game.playSound('openingSong.mp3');
