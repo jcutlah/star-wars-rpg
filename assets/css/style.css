@@ -134,6 +134,18 @@ body {
     background-repeat: no-repeat;
     min-height: calc(100vh);
 }
+#roster p {
+    text-align: center;
+    display: none;
+    color: #fff;
+    font-size: 30px;
+}
+body.new-game #hero-choice {
+    display: block;
+}
+body.battle-ready #enemy-choice {
+    display: block;
+}
 
 @media(max-width: 768px){
     .contender h3 {
