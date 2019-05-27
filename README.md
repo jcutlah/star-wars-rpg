@@ -1,4 +1,5 @@
-# A turn-based battle game, set to a Star Wars theme.
+# Star Wars RPG
+## A turn-based battle game, set to a Star Wars theme.
 Click to get started, where you're able to choose which character you'd like to play as.
 You are then prompted to choose an oponent. Battle them until one of you runs out of health.
 If you run out of health, the game is over.
